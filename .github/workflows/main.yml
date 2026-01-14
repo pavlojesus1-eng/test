@@ -1,16 +1,22 @@
-name: External API trigger test
+name: Xray Remote Job
 
 on:
-  repository_dispatch:
-    types: [xray-test]
+  workflow_dispatch:
+    inputs:
+      executionKey:
+        description: 'Xray Test Execution Key'
+        required: false
+  push:
+    branches:
+      - main
 
 jobs:
-  api-trigger-job:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Show payload
-        run: |
-          echo "Event triggered from external API"
-          echo "Payload:"
-          echo '${{ toJson(github.event.client_payload) }}'
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Dummy step
+        run: echo "Workflow triggered from Xray"
