@@ -21,8 +21,8 @@ jobs:
       - name: Print all inputs
         run: |
           echo "param1 = '${{ github.event.inputs.param1 }}'"
-          echo "param2      = '${{ github.event.inputs.param2 }}'"
-          echo "param3  = '${{ github.event.inputs.param3 }}'"
+          echo "param2 = '${{ github.event.inputs.param2 }}'"
+          echo "param3 = '${{ github.event.inputs.param3 }}'"
 
       - name: Dump full event payload (for debugging)
         run: |
