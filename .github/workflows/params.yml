@@ -1,0 +1,30 @@
+name: Xray Params Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      param1:
+        description: 'Parameter 1'
+        required: false
+      param2:
+        description: 'Parameter 2'
+        required: false
+      param3:
+        description: 'Parameter 3'
+        required: false
+
+jobs:
+  show-inputs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print all inputs
+        run: |
+          echo "param1 = '${{ github.event.inputs.param1 }}'"
+          echo "param2      = '${{ github.event.inputs.param2 }}'"
+          echo "param3  = '${{ github.event.inputs.param3 }}'"
+
+      - name: Dump full event payload (for debugging)
+        run: |
+          echo "FULL EVENT PAYLOAD:"
+          echo '${{ toJson(github.event) }}'
